@@ -1,15 +1,7 @@
-import { dfActionType } from './actions'
 
-const initialState = {
+import { combineReducers } from 'redux'
+import df from './components/home/reducers'
 
-};
-
-export function df(state = initialState, action) {
-  switch(action.type) {
-    case dfActionType:
-      return {
-        ...state,
-        type: action.type
-      }
-  }
-}
+export default combineReducers({
+  df: df
+})

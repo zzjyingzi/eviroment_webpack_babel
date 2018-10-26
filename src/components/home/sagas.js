@@ -1,7 +1,7 @@
 import { put, take, call, fork } from 'redux-saga/effects';
-import { dfActionType } from '../../actions'
+import { dfActionType } from './actions'
 
-export function* watchMaintainTodoListRequestData() {
+export default function* watchMaintainTodoListRequestData() {
   while (true) {
     yield take(dfActionType);
   }

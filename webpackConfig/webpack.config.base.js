@@ -8,19 +8,36 @@ module.exports = {
 		index: './src/index.js'
 	},
 	output: {
-		filename: '[name].js',
+		filename: '[name][hash:5].js',
 		path: path.resolve(__dirname, '../dist')
 	},
   devServer: {
       contentBase: './dist',
-      hot: true
+      hot: true,
+      historyApiFallback: true,
+      inline: true
   },
+  devtool: 'eval-source-map',
+
 	plugins: [
 		new CleanWebpackPlugin(['dist']),
 		new HtmlWebpackPlugin({
 			title: '大云物联',
-			template: './static/index.html'
-		}),
+			template: './static/index.html',
+      // filename: "",
+      // templateParameters: "",
+      // inject: "",
+      // favicon: "",
+      // meta: "",
+      // minify: false,  //boolean
+      // hash: "",
+      // cache: "",
+      // showErrors: "",
+      // chunks: "",
+      // excludeChunks: "",   // skip some chunks
+      // xhtml: "",
+      chunksSortMode:"dependency",
+    }),
     // new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
 	],
@@ -40,13 +57,13 @@ module.exports = {
 					minChunks: 1,
 					automaticNameDelimiter: "_"
 				},
-        components: {    //在一层的中拆出了第二层，第二层生成了libs~index.js文件
+        components: {
           name: true,
           chunks: "initial",
           minChunks: 2,
           automaticNameDelimiter: "_"
         },
-        utils: {    //在一层的中拆出了第二层，第二层生成了libs~index.js文件
+        utils: {
           name: true,
           chunks: "initial",
           minChunks: 3,

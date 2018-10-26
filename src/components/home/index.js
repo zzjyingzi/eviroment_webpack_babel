@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import { connect } from	'react-redux'
-import { dfAction } from '../../reducers'
+import { dfAction } from './actions'
 
 class Home extends Component {
 	constructor(props) {
